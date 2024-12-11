@@ -7,6 +7,8 @@ import ProjectDetailPage from "./pages/projects/ProjectDetailPage";
 import AuthLayout from "./layouts/AuthLayout";
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterView from "./pages/auth/RegisterPage";
+import ConfirmAccountPage from "./pages/auth/ConfirmAccountPage";
+import RequestNewCodePage from "./pages/auth/RequestNewCodePage";
 
 export default function Router() {
   return (
@@ -24,6 +26,11 @@ export default function Router() {
         <Route element={<AuthLayout />}>
           <Route path="/auth/login" element={<LoginPage />} />
           <Route path="/auth/register" element={<RegisterView />} />
+          <Route
+            path="/auth/confirm-account"
+            element={<ConfirmAccountPage />}
+          />
+          <Route path="/auth/request-code" element={<RequestNewCodePage />} />
         </Route>
       </Routes>
     </BrowserRouter>
