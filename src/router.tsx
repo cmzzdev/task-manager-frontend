@@ -9,6 +9,8 @@ import LoginPage from "./pages/auth/LoginPage";
 import RegisterView from "./pages/auth/RegisterPage";
 import ConfirmAccountPage from "./pages/auth/ConfirmAccountPage";
 import RequestNewCodePage from "./pages/auth/RequestNewCodePage";
+import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage";
+import NewPasswordPage from "./pages/auth/NewPasswordPage";
 
 export default function Router() {
   return (
@@ -31,6 +33,11 @@ export default function Router() {
             element={<ConfirmAccountPage />}
           />
           <Route path="/auth/request-code" element={<RequestNewCodePage />} />
+          <Route
+            path="/auth/forgot-password"
+            element={<ForgotPasswordPage />}
+          />
+          <Route path="/auth/new-password" element={<NewPasswordPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
