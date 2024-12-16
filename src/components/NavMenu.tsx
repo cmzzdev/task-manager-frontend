@@ -4,11 +4,28 @@ import {
   PopoverPanel,
   Transition,
 } from "@headlessui/react";
+import { useQueryClient } from "@tanstack/react-query";
 import { Bars3Icon } from "@heroicons/react/20/solid";
+import { removeCookie } from "typescript-cookie";
 import { Link } from "react-router-dom";
 import { Fragment } from "react/jsx-runtime";
+import { User } from "../types";
 
-export const NavMenu = () => {
+type NavMenuProps = {
+  name: User["name"];
+};
+
+export const NavMenu = ({ name }: NavMenuProps) => {
+  const queryClient = useQueryClient();
+  const logout = () => {
+    // remove cookie
+    removeCookie("AUTH_TASK_MANAGER", {
+      path: import.meta.env.VITE_APP_URL_BASE,
+    });
+    //  invalidate cache user
+    queryClient.invalidateQueries({ queryKey: ["user"] });
+  };
+
   return (
     <Popover className="relative">
       <PopoverButton className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 p-1 rounded-lg bg-red-400">
@@ -26,7 +43,7 @@ export const NavMenu = () => {
       >
         <PopoverPanel className="absolute left-1/2 z-10 mt-5 flex w-screen lg:max-w-min -translate-x-1/2 lg:-translate-x-48">
           <div className="w-full lg:w-56 shrink rounded-xl bg-white p-4 text-sm font-semibold leading-6 text-gray-900 shadow-lg ring-1 ring-gray-900/5">
-            <p className="text-center">Hola: Usuario</p>
+            <p className="text-center">Hi {name}</p>
             <Link to="/profile" className="block p-2 hover:text-purple-950">
               Profile
             </Link>
@@ -36,7 +53,7 @@ export const NavMenu = () => {
             <button
               className="block p-2 hover:text-purple-950"
               type="button"
-              onClick={() => {}}
+              onClick={logout}
             >
               Logout
             </button>

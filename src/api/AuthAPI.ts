@@ -6,7 +6,6 @@ import {
   ForgotPasswordForm,
   NewPasswordForm,
   RequestConfirmationCodeForm,
-  User,
   UserLoginForm,
   UserRegistrationForm,
   userSchema,
