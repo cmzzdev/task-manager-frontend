@@ -28,7 +28,7 @@ export default function TaskList({ tasks }: TaskListProps) {
 
   return (
     <>
-      <h2 className="text-5xl font-black my-10">Tareas</h2>
+      <h2 className="text-5xl font-black my-10">Tasks</h2>
 
       <div className="flex gap-5 overflow-x-scroll 2xl:overflow-auto pb-32">
         {Object.entries(groupedTasks).map(([status, tasks]) => (
