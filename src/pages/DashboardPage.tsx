@@ -12,6 +12,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteProject, getProjects } from "../api/ProjectAPI";
 import { toast } from "react-toastify";
 import { useAuth } from "../hooks/useAuth";
+import { isManager } from "../utils/policies";
 
 export default function DashboardPage() {
   const { data: user, isLoading: authLoading } = useAuth();
@@ -66,7 +67,7 @@ export default function DashboardPage() {
                 <div className="flex min-w-0 gap-x-4">
                   <div className="min-w-0 flex-auto space-y-2">
                     <div className="mb-2">
-                      {project.manager === user._id ? (
+                      {isManager(project.manager, user._id) ? (
                         <p className="font-bold text-xs uppercase bg-indigo-50 text-indigo-500 border-2 border-indigo-500 rounded-lg inline-block py-1 px-5">
                           Manager
                         </p>
@@ -117,7 +118,7 @@ export default function DashboardPage() {
                             Project detail
                           </Link>
                         </MenuItem>
-                        {project.manager === user._id && (
+                        {isManager(project.manager, user._id) && (
                           <>
                             <MenuItem>
                               <Link
