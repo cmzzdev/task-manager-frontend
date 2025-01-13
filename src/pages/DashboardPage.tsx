@@ -34,9 +34,6 @@ export default function DashboardPage() {
     },
   });
 
-  console.log(data);
-  console.log(user?._id);
-
   if (isLoading && authLoading) return "Loading...";
 
   if (data && user)
