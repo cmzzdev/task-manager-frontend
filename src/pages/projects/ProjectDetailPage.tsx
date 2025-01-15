@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { getProjectById } from "../../api/ProjectAPI";
+import { getFullProjectDetailsById } from "../../api/ProjectAPI";
 import AddTaskModal from "../../components/tasks/AddTaskModal";
 import TaskList from "../../components/tasks/TaskList";
 import EditTaskData from "../../components/tasks/EditTaskData";
@@ -17,7 +17,7 @@ export default function ProjectDetailPage() {
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["projectDetail", projectId],
-    queryFn: () => getProjectById(projectId),
+    queryFn: () => getFullProjectDetailsById(projectId),
     retry: false,
   });
 
