@@ -2,6 +2,7 @@ import { isAxiosError } from "axios";
 import api from "../lib/axios";
 import { setCookie } from "typescript-cookie";
 import {
+  CheckPasswordForm,
   ConfirmToken,
   ForgotPasswordForm,
   NewPasswordForm,
@@ -113,6 +114,17 @@ export async function getUser() {
     if (response.success) {
       return response.data;
     }
+  } catch (error) {
+    if (isAxiosError(error) && error.response) {
+      throw new Error(error.response.data.error);
+    }
+  }
+}
+
+export async function checkPassword(formData: CheckPasswordForm) {
+  try {
+    const { data } = await api.post("/auth/check-password", formData);
+    return data.msg;
   } catch (error) {
     if (isAxiosError(error) && error.response) {
       throw new Error(error.response.data.error);
