@@ -54,7 +54,7 @@ export default function Tabs() {
                 to={tab.href}
                 className={classNames(
                   location.pathname === tab.href
-                    ? "border-red-800 text-red-800"
+                    ? "border-red-400 text-red-400"
                     : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
                   "group inline-flex items-center border-b-2 py-4 px-1 text-sm font-medium"
                 )}
@@ -62,7 +62,7 @@ export default function Tabs() {
                 <tab.icon
                   className={classNames(
                     location.pathname === tab.href
-                      ? "text-red-800"
+                      ? "text-red-400"
                       : "text-gray-400 group-hover:text-gray-500",
                     "-ml-0.5 mr-2 h-5 w-5"
                   )}
