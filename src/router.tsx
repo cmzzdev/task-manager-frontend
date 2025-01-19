@@ -15,6 +15,7 @@ import ProjectTeamPage from "./pages/projects/ProjectTeamPage";
 import ProfilePage from "./pages/profile/ProfilePage";
 import ChangePasswordPage from "./pages/profile/ChangePasswordPage";
 import ProfileLayout from "./layouts/ProfileLayout";
+import NotFound from "./pages/404/NotFound";
 
 export default function Router() {
   return (
@@ -56,6 +57,10 @@ export default function Router() {
             element={<ForgotPasswordPage />}
           />
           <Route path="/auth/new-password" element={<NewPasswordPage />} />
+        </Route>
+
+        <Route element={<AuthLayout />}>
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
